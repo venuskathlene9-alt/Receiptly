@@ -41,4 +41,11 @@ Expenses and receipt images sync to the signed-in Supabase account. Row-level se
 
 ## Deployment
 
-Build with `npm run build` and deploy the generated `dist/` folder to a static host such as Vercel. The app uses client-side routes, so configure the host to rewrite application paths to `index.html`.
+Pushing to `main` builds and deploys the app to GitHub Pages using `.github/workflows/deploy.yml`. In repository **Settings → Secrets and variables → Actions → Variables**, add:
+
+- `VITE_SUPABASE_URL` — your Supabase project URL.
+- `VITE_SUPABASE_ANON_KEY` — your Supabase publishable/anon key. Never use a service-role key.
+
+In Supabase **Authentication → URL Configuration**, set the site URL to `https://venuskathlene9-alt.github.io/Receiptly/` and allow `https://venuskathlene9-alt.github.io/Receiptly/app` as a redirect URL. Add your local development redirect URL too if you use Google sign-in locally.
+
+For other static hosts, build with `npm run build` and deploy the generated `dist/` folder. Configure the host to serve `index.html` for client-side routes.
